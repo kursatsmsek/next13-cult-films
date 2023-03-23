@@ -1,7 +1,14 @@
 import HomeContainer from "@/containers/home"
 import Movies from "@/mocks/movies.json"
+import { resolve } from "styled-jsx/css"
 
-export default function Home({ params }) {
+async function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms))
+}
+
+async function Home({ params }) {
+  await delay(5000)
+
   let selectedCategory
 
   if (params.category?.length > 0) {
@@ -17,3 +24,5 @@ export default function Home({ params }) {
     />
   )
 }
+
+export default Home
