@@ -5,10 +5,10 @@ import Movies from "@/mocks/movies.json"
 import Genres from "@/mocks/genres.json"
 import { MoviesSection } from "@/components/movies-section"
 
-function HomeContainer({ cultMovies, advicedMovies }) {
+async function HomeContainer({ cultMovies, advicedMovies }) {
   return (
     <div>
-      <FeaturedMovie movie={Movies.results[0]} />
+      <FeaturedMovie movie={cultMovies[Math.floor(Math.random() * 4) + 1]} />
       {/* <Categories categories={Genres.genres.slice(0, 5)} /> */}
       {/* {selectedCategory.movies.length > 0 && (
         <MoviesSection
