@@ -12,9 +12,9 @@ function Header() {
           <FaPlayCircle /> CULTFILMS
         </Link>
         <nav className={styles.navigationMenu}>
-          <Link href="#">MOVIES</Link>
-          <Link href="#">SERIES</Link>
-          <Link href="#">KIDS</Link>
+          <Link href="https://www.github.com/kursatsmsek/next13-cult-films">
+            Star Me ❤️
+          </Link>
         </nav>
       </div>
     </header>
