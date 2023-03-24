@@ -6,7 +6,7 @@ import { FaPlus } from "react-icons/fa"
 import styles from "./styles.module.css"
 
 function FeaturedMovie({ movie = {}, isCompact = true }) {
-  const { poster_path, title, overview } = movie
+  const { photoUrl, title, overview } = movie
   return (
     <div className={styles.movieWrapper}>
       <h1 className={styles.movieTitle}>{title}</h1>
@@ -17,22 +17,17 @@ function FeaturedMovie({ movie = {}, isCompact = true }) {
       >
         {overview}
       </p>
-      <div className={styles.actionButtons}>
+      {/* <div className={styles.actionButtons}>
         <Link className={styles.playButton} href={`/movie/${movie.id}`}>
           Play
         </Link>
         <button className={styles.addButton}>
           <FaPlus />
         </button>
-      </div>
+      </div> */}
       <div className={styles.moviePoster}>
         <div className={styles.moviePosterOverlay}></div>
-        <Image
-          unoptimized
-          src={`https://image.tmdb.org/t/p/original${poster_path}`}
-          alt={title}
-          fill
-        />
+        <Image unoptimized src={photoUrl} alt={title} fill />
       </div>
     </div>
   )

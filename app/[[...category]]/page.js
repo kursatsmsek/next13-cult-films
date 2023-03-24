@@ -1,28 +1,23 @@
 import HomeContainer from "@/containers/home"
 import Movies from "@/mocks/movies.json"
-import { resolve } from "styled-jsx/css"
+import { getCultMovies, getAdvicedMovies } from "@/services/apiCalls"
 
 async function delay(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
 async function Home({ params }) {
-  await delay(5000)
+  await delay(1000)
 
-  let selectedCategory
+  const cultMoviesPromise = getCultMovies()
+  const advicedMoviesPromise = getAdvicedMovies()
 
-  if (params.category?.length > 0) {
-    selectedCategory = true
-  }
+  const [cultMovies, advicedMovies] = await Promise.all([
+    cultMoviesPromise,
+    advicedMoviesPromise,
+  ])
 
-  return (
-    <HomeContainer
-      selectedCategory={{
-        id: params.category?.[0] ?? "",
-        movies: selectedCategory ? Movies.results.slice(0, 7) : [],
-      }}
-    />
-  )
+  return <HomeContainer cultMovies={cultMovies} advicedMovies={advicedMovies} />
 }
 
 export default Home
